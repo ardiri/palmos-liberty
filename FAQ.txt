@@ -1,0 +1,317 @@
+----------------------------------------------------------------------------
+ Liberty version 1.3.1
+----------------------------------------------------------------------------
+
+  Gambit Studios
+  Frequently Asked Questions
+  Liberty version 1.3.1
+
+----------------------------------------------------------------------------
+
+   1. What is Liberty?
+   2. What is a GameBoy(tm)?
+   3. What is a GameBoy(tm) ROM image?
+   4. Where can I find GameBoy(tm) ROM image files?
+   5. Where can I find GameBoy(tm) ROM image files (32K)?
+   6. How do I convert GameBoy(tm) ROM image files for use with Liberty?
+   7. How do I configure Liberty?
+   8. Why is Liberty slow? 
+   9. How can I make Liberty faster?
+  10. Why is there no sound in Liberty?
+  11. Why am I getting errors for saving and loading of games?
+  12. Why does beaming of ROM images not work?
+  13. How can I purchase Liberty?
+  14. Who are the guys behind Liberty?
+
+----------------------------------------------------------------------------
+
+   1. What is Liberty?
+
+      Liberty  is the first  GameBoy(tm) emulator for devices that use the 
+      Palm Computing Platform,  using PalmOS 3.0 or  later. Please consult
+      your device to identify if it is compatible with Liberty,  using the
+      App->Info dialog (selecting Version) in the application launcher.
+
+      The following devices are known not to work with Liberty:
+ 
+        Pilot 1000, 5000
+        Palm Personal, Professional
+
+----------------------------------------------------------------------------
+
+   2. What is a GameBoy(tm)?
+
+      GameBoy(tm)  is a  device designed by Nintendo who's sole purpose is 
+      to provide the user with the ability to play computer games. It used
+      an 8-bit processor (similar to 8080/z80), 8K of RAM, 8K of video RAM
+      and a screen resolution of 160x144 (2.6" in size). It provided 2 bit
+      grayscale graphics.
+
+      Liberty only supports original GameBoy(tm) games.
+ 
+----------------------------------------------------------------------------
+
+   3. What is a GameBoy(tm) ROM image?
+
+      GameBoy(tm) games were distributed using a plug-in cart system. This
+      cart contains the program code and additional memory for the game it
+      provides.  A GameBoy(tm) ROM image  is a direct duplicate of what is
+      stored on this cart.  Each bank is 16K in size and  each cart always 
+      has an even number of banks (multiple of 32K).
+
+----------------------------------------------------------------------------
+
+   4. Where can I find GameBoy(tm) ROM image files?
+   5. Where can I find GameBoy(tm) ROM image files (32K)?
+
+      Gambit Studios does not endorse the illegal use of commercial games. 
+      DO NOT request illegal images from us -  we don't know where you can 
+      get them, and will not respond to your requests.
+
+      GameBoy(tm) ROM images are available on the Internet - start here:
+
+        http://www.vintagegaming.com/emulators/gameboyroms.html
+        http://www.emuunlim.com/ROMs/gameboy.shtml
+
+      GambitStudios provides pre-converted GameBoy(tm) ROM images of  free
+      and demonstration roms at the following URL:
+
+        http://www.gambitstudios.com/freesoftware.asp
+
+      A large number of freeware and public domain GameBoy(tm) ROM  images
+      can be found here:
+
+        http://welcome.to/kojote/
+
+      There are at least 80 commercial games available for the GameBoy(tm)
+      that are 32K in size. These include, but, are not limited to:
+
+        Dr. Mario,         Tetris,         World Bowling,     
+        Tennis,            Scramble,       Asteroids, 
+        Centipede,         Bomb Jack,      Hyper Lode Runner and many more!!!
+
+      UPDATE: (1.1.1) lifting of 32K demo limit: you can use >32K rom files!
+              . the demo limit is ONLY valid for the first 32 executions of
+	        the Liberty application, after this - you MUST register :))
+
+----------------------------------------------------------------------------
+
+   6. How do I convert GameBoy(tm) ROM image files for use with Liberty?
+
+      Liberty  is distributed with  a GameBoy(tm) ROM  image utility. This 
+      program just splits the ROM image  up into a  readable format on the
+      Palm Computing Platform.
+
+      Various executables are available, depending on your platform.
+
+        liberty.zip    = PC platform
+
+                         16bit MSDOS program
+                         32bit Windows program (drag + drop compatable)
+                         32bit Windows GUI program <<-- NEW!
+                         InstallBuddy PlugIn
+
+                         The easiest way to convert ROMS to pdb files is 
+                         to copy them into a single directory such as:
+ 
+                           C:\GBROMS
+
+                         Make sure the rom2pdb.exe and gb2pdb.bat are in
+                         this  directory as  well and then type "gb2pdb"
+                         and press [enter]. Install the .pdb files using
+                         the software provided with the device.
+
+                         UPDATE: (2002) new win32 conversion utility!!!!
+                                 - converts and hotsyncs directly! get it
+                                 
+                            http://www.gambitstudios.com/download.asp
+                            
+        liberty.sit    = Macintosh platform
+
+                         Macintosh Executable (drag + drop)
+
+        liberty.tar.gz = *nix platform
+
+                         gcc -o rom2pdb rom2pdb.c
+
+      The source code is provided in each distribution, so the utility can
+      be re-compiled to suit your own likings :) 
+
+----------------------------------------------------------------------------
+
+   7. How do I configure Liberty?
+
+      Liberty has a number of configuration options that allows the best
+      gameplay environment:
+
+        - key assignments
+
+          You can adjust the configuration of the hardware buttons to suit
+          the GameBoy(tm) games that  are emulated in Liberty. The default
+          configuration gives the four center buttons as the joy pad, with
+          button A on the right and button B on the left.
+
+        - grayscale configuration
+
+          If you are having problems seeing the grayscale tones,  you can 
+          make adjustments using this configuration screen.  It  is  only
+          available on devices that use 2bpp grayscale graphics displays.
+
+        - color tweaking
+
+          Some Palm devices are color, why should Liberty be a boring old
+          grayscale application?  You can tweak the grayscale colors to a
+          set of colors using RGB configurations. 
+
+          Experiment with the different options to find a good system :)
+
+        - frame blit
+
+          You can control the rate at which the Palm screen is updated by
+          setting this value. "Every Frame" is the slowest, however, once
+          an overclocking utility is  used "Every 2nd Frame"  yeilds very 
+          good animations and game play feel.          
+
+      If you are having problems using your hardware keys or feel Liberty 
+      is running very slow - you should disable any uneccessary hacks and
+      perform a soft-reset and restart liberty.
+
+      UPDATE: (1.2) game by game configuration!! finally!
+              . you can now use the flexibility of configuring each game on
+                a game by game basis! no more tweaking each time you play.
+
+----------------------------------------------------------------------------
+
+   8. Why is Liberty slow? 
+   9. How can I make Liberty faster?
+
+      Liberty is an emulator. Emulation requires in many cases at least 8x
+      (10 times in reality)  of CPU power to  emulate a particular type of
+      CPU. The Palm's CPU, bundled with the resources required by the Palm
+      Operating System is not sufficient to run at full speed.
+
+      Overclocking is not supported by Palm Computing and the use of these 
+      types of programs is  at your OWN risk.  Various applications  exist 
+      that can do this task.  Afterburner  3.0 has been  tested internally 
+      and works with no problems, however, results may vary. 
+
+      You should see  some substantial increase in performance as soon  as 
+      the device is overclocked.  If you do  not see any improvement,  you
+      should  consult the  utilities manual  to ensure that the program is
+      doing what it should.
+
+      The following url provides an example of how to overclock:
+
+      http://www.ardiri.com/index.cfm?redir=palm&cat=liberty&subcat=overclck
+
+      You can use the "Benchmark" program to ensure your device is running
+      at a faster speed when the utility is activated.  It is  written  by
+      Neil Bridges and can be found on www.palmgear.com.
+
+      The best games for use  with Liberty are RPG, adventure and strategy 
+      games like Pokemon, Monopoly, Final Fantasy etc.  Liberty  does  not 
+      emulate games well  that  change the  screen contents quickly,  like 
+      action games, side scrollers etc.
+
+----------------------------------------------------------------------------
+
+  10. Why is there no sound in Liberty?
+
+      The GameBoy(tm) uses 4-channel with stereo sound.  It is not possible
+      to reproduce the  sound within Liberty without  having a  significant
+      impact on execution performance.
+ 
+      UPDATE: (1.2+) partial sound support: only channels 1 and 2.
+              . it can be more annoying than useful, and can be disabled :)
+
+----------------------------------------------------------------------------
+
+  11. Why am I getting errors for saving and loading of games?
+
+      Liberty performs a number of checks when doing a save and restore of
+      a emulation  state and can run into a number of problems when trying
+      to save or restore a game. The error can be caused because:
+
+        - using an non-compatible saved state (from an earlier version)
+	- low on memory and cannot perform the save
+	- a writing error occured when saving the game state
+
+      We have considered being backward compatible, however,  each release 
+      of Liberty introduces either new attributes or a slight  redesign of
+      the  internal mechanisms of  the emulator.  It would be  a developer 
+      nightmare to try and translate between existing states. In the event
+      something goes  wrong,  you  will  be informed,  and the problematic 
+      saved  state  will be  removed.  There can be times where errors can 
+      occur for different  reasons,  and you should  report any errors you
+      experience to us - it could be a *bug* :)
+     
+----------------------------------------------------------------------------
+
+  12. Why does beaming of ROM images not work?
+
+      The Palm OS exchange  manager (infa-red) is designed to work with the
+      timing of a 16Mhz or 20Mhz processor  [depending on device].  The use 
+      of an  overclocking utility  may interfere with the exchange  manager
+      and cause problems with beaming. 
+
+      If you are having problems with beaming ROM images, try disabling the
+      overlocking utility and try again.
+
+----------------------------------------------------------------------------
+
+  13. How can I purchase Liberty?
+
+      Liberty is available online exclusively from the PalmGearHQ website.
+      You can purchase  it by clicking on the "buy"  icon at the following 
+      website:
+
+        http://www.palmgear.com/software/showsoftware.cfm?prodID=7928
+
+      PalmGearHQ handle  credit card  purchases both  online and over  the 
+      phone. If you do not  have a credit card,  you can send  a cheque or
+      money order (in US$) to the following address:
+
+        Gambit Studios, LLC
+        220 North Thornton St.
+        Richmond, MO 64085
+        United States of America (USA)
+
+      Pricing is as follows:
+
+        $16.95 - Liberty
+        $22.95 - Liberty + AfterBurner 3.0 BUNDLE
+
+      Cash payment  is considered as  long as it  is received  at the above 
+      address, or paid in person [please allow a few days to process order]
+
+----------------------------------------------------------------------------
+
+  14. Who are the guys behind Liberty?
+
+      Liberty was a joint effort between Aaron Ardiri and Michael Ethetton.
+
+      Michael Ethetton is the president of Gambit Studios and wrote the z80
+      and gameboy emulation core of the Liberty application.
+
+         methetton@gambitstudios.com
+         http://www.gambitstudios.com/
+
+      Aaron Ardiri,  an Independent Palm Developer,  joined the development 
+      team on invitation to get the product "out the door". His duties were
+      to build an application  framework, handle the memory  management and
+      build the user interface of the emulator. 
+
+         aaron@ardiri.com
+         http://www.ardiri.com/
+         
+----------------------------------------------------------------------------
+
+  If you  have one of those questions that  you feel we should provide some 
+  form of  explanation of,  please let us  know and we can incorporate them 
+  into future versions of this FAQ.
+
+  // Aaron Ardiri
+  // Michael Ethetton
+  - the Liberty development team           
+
+----------------------------------------------------------------------------

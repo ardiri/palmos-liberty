@@ -1,0 +1,290 @@
+----------------------------------------------------------------------------
+ Liberty version 1.3.1
+----------------------------------------------------------------------------
+
+  Gambit Studios
+  Changes Log History [for you geeks] :P
+  Liberty version 1.3.1
+
+  1.3.1
+  19-Dec-02       - PalmOS(r) 5!
+
+                  Serious modification to blitting engine, save game state
+                  and general memory configuration/tweaking to be 100% API
+                  compliant for PalmOS(r) 5 devices.
+
+                   >> NOTE: liberty contains absolutely ZERO arm code! <<
+
+                  Our internal testing has shown that Liberty running on a 
+                  Tungsten|T unit runs at approximately the speed of a 68k
+                  device running at 40Mhz. [well done palm - PACE rocks]
+
+                  - general updates
+
+                  A set of  updates, tweaking, compatibility fixes to make 
+                  gameplay for various rom images work correctly.
+
+                    . optimization for z80 code
+                    . joypad interrupt
+                    . sprite priority bit
+                    . sound updates (better algorithms)
+                    . real-time clock support
+                    . PalmOS key handling (no more jumping out of app!)
+
+                  and, a few more *phew*
+
+                  - radical emualution
+
+                  New algorithm for emulation,  to reduce number of gb CPU 
+                  cycles emulated per frame. *MAY* cause gfx problems with 
+                  some rom images or slow downs :(
+
+                   . please provide feedback on this option when enabled!
+
+  1.2.4/1.2.5
+  28-Dec-00       - InnoPak/2V Module support
+                    (http://www.innogear.com/)
+
+                  A  number of users requested rumble pack support for the 
+                  InnoPak/2V springboard module - so here it is :)
+
+                  - xmas cleaning
+
+                  A few small memory leaks and possible "future"  problems
+                  were  isolated and cleaned up such that Liberty now runs 
+                  without dying harshly on Palm DEBUG rom images (POSE).
+ 
+  1.2.3
+  01-Dec-00       - Memory Access Module support
+                    (http://www.pjbox.com/data/data-memory.jpg)
+
+                  Rumble pack support!!!!
+
+                  The Memory Access Module provides three functionalities,
+                  however, we were interested in tapping into only one! :)
+                  The vibrating  mechanism allows Liberty to emulate games
+                  that have Rumble  Pack support!!  Feel the vibrations as 
+                  your pinball  ball hits the rammers  when playing a game 
+                  like Pokemon Pinball!!
+
+                  - Handspring Flash Module updates
+
+                  Revisited the application load/game restore code and put
+                  in additional checks to correctly launch a saved game or
+                  previously active game for a GameBoy rom image stored in
+                  a Springboard module memory area.
+
+  1.2.2
+  29-Nov-00       - GamePad(tm) controller support
+                    (www.palmgamepad.com) 
+
+                  The  ultimate accessory for a GameBoy emulator!  Get the
+                  real  feeling of a  GameBoy  device by using this device
+                  produced by World Wide Widget Works.
+
+                         ===========================================
+
+                                 [ up ]                     [ A ]
+                           [ left ]  [ right ]       [ B ]
+                                [ down ]
+
+                                     [ select ] [ start ]
+
+                         ===========================================
+
+  1.2.1
+  18-Nov-00       - GameBoy screen emulation fixes
+
+                  Fixed some graphic and interrupt  glitches that affected 
+                  the display and playability of some games.
+
+                  - saved game fix
+
+                  Added some sanity  type checks in  the state compression
+                  code to catch *very* rare situations  where a soft-reset
+                  can occur (ie: checking bounds etc - slower, but, safer)
+
+                  - rom beaming fix
+
+                  Modification of the beaming code to prevent the "unknown 
+                  file format"  error message from being presented  when a 
+                  rom image with a "." character in the name was beamed.
+
+  1.2 
+  15-Nov-00       - z80 emulation fixes
+                  - GameBoy screen emulation rewrite
+
+                  The largest bottleneck in Liberty was the manner that we
+                  handled the transition of  the GameBoy graphics from the
+                  emulation onto the Palm's display.  A complete  re-write 
+                  has been done, and a 30-70% speed increase has occured!
+
+                  - memory management changes
+
+                  Cleaned up a bit of the memory management services (such
+                  as saved games,  memory initialization) to be "cleaner",
+                  in addition to allowing some games to run! (yay).  It is 
+                  stuff you dont see, so - you wont even notice it :)
+
+                  - sound!
+
+                  You asked for it, and now - you have it! Bleep-Blop etc,
+                  the presence of sound may wish you never wanted it :) it
+                  works  great on some games,  and can be totally annoying 
+                  on others - but, its there. configure to your liking :))
+
+                  By default, we have disabled the sound - so turn it on!
+
+                  - configuration adjustments
+
+                  Its been on the wish-list since day one, and its finally
+                  here! *yay*.  Configure your  controls / colors / tweaks 
+                  on a  game by game basis! No more tweaking each time you
+                  start your favourite games!
+
+  1.1.1 
+  17-Oct-00       - z80 emulation fixes
+                  - ROM loading fixes
+ 
+                  General purpose bug-fixes/enhancements here, a number of
+                  games that didn't work in earlier versions now do. visor
+                  users may now install roms into the flash module and get
+                  access to playing (no more NULL dbID passed error).
+
+                  - controller additions
+
+                  Modifications have  been made such that the user can use 
+                  the grafitti area for pressing buttons. This feature can
+                  be useful  in some  games (walking) however it has a few
+                  limitations.
+
+                           [ U+L ][  U  ][ U+R ] [ BUTTON A ]
+                           [  L  ][     ][  R  ] ------------
+                           [ D+L ][  D  ][ D+R ] [ BUTTON B ]
+
+                           +-------------------+ +----------+
+                                 alphabetic         numeric
+
+                  It is not possible  to press a direction AND a button at 
+                  the same time (limitation of Palm, only ONE pen) :P
+
+                  - 32K rom limit removed (in demo)
+
+                  The 32K rom limit has now been lifted. Included is a new
+                  file called "Gmbt_TRIAL.pdb",  which when installed will
+                  allow you to test gameboy games greater than 32K. 
+
+                  This  trial feature is available ONLY for 30 executions. 
+                  After the application has been started 30 times, it will
+                  become "unregistered", and will be limited to 32K roms.
+
+                  - color changes!
+
+                  Running Liberty on color devices now lets you get a nice
+                  feeling of what you can do  with color (did you all miss
+                  the color tweaking configuration screen?)
+
+                  Liberty runs in lovely default colors (if available):
+                  
+                   . musky yellow and 
+                   . musky blue 
+
+                  See "pikachu" in his correct colors in Pokemon! :P
+
+                  - improved rom2pdb :P
+
+                  Generating datafiles on various operating systems caused
+                  a few problems when just "adding" the name of the rom to
+                  the output file generation. 
+
+  1.1 
+  22-Aug-00       - z80 core update
+                  - Press All Keys support
+
+                  The z80 core went through a serious optimization bashing
+                  tweaking every last nano-second out of the emulator.  At
+                  the same time, heaps of modifications to support various
+                  GameBoy games, such as echo-ram etc.
+
+                  - smaller roms!!!
+
+                  We heard ya, and since we squeezed enough speed from the
+                  z80  emulation core - a few nano-seconds could be spared 
+                  without you even noticing a difference from 1.0e :))
+
+                  If you install an OLDER rom format, it will let you know
+                  when you try and run it -> YOU MUST RECONVERT THE ROM!!!
+
+                  - rom BEAMING support
+
+                  Share... Share... Share...
+
+                  Please be  aware that some overclocking tools dont allow
+                  beaming of "databases" when the system is overlocked. If
+                  you are having problems  with beaming,  disable them and 
+                  try again.           
+
+                  - GameState Save [individual games]
+
+                  Now you can cheat :)  Save the state of the current game
+                  that is running, exit out of the game,  and then through
+                  our little save-state manager you can delete or continue
+                  the game where you left off! We know space is an issue,
+                  so we compressed them too.
+
+  1.0e
+  12-Jul-00       - z80 core update
+                  - serial interrupt implementation
+                  - countdown timer fixes
+
+                  A small number of  modifications to the emulation engine 
+                  that provides support / fixes  for various GameBoy games 
+                  being emulated.
+
+                  - GameState Save Fix [for exit-return ONLY]
+
+                  We forgot to keep track of the current bank index :))
+
+  1.0d
+  09-Jul-00       - ROM Emulation Warning Dialog
+
+                  Emulators are fragile things :)  We recommend that users
+                  test the GameBoy emulation on the PalmOS Emualtor (POSE)
+                  prior to installing them into their device.  Not all ROM
+                  images are emulated perfectly, and may cause your device
+                  to crash unexpectedly.
+
+                  - GameState Save [for exit-return ONLY]
+
+                  If the user is emulating a GameBoy game and wants to get
+                  out temporarially, tapping on the [apps] button and then
+                  restarting  Liberty would return them to where they were
+                  when they left.
+
+  1.0c
+  07-Jul-00       - New Memory Management Architecture
+         
+                  The use of undocumented PalmOS  API calls were taken out
+                  of the application,  which was causing  pernament memory
+                  corruption to the device - *ouch*.
+  
+                  GREETZ TO:         Gacel, pthree, irq, raja and setuid!
+  
+  1.0, 1.0a, 1.0b
+  06-Jul-00       - Offical Release of Liberty
+                      
+                  Memory Management  architecture of these versions proved
+                  fatal to many Palm Computing Platform users based on the
+                  manner  in which the emulator was  executing.  Untrusted 
+                  pointers were generated by the emulation engine and data
+                  access (which was  unprotected)  lead to the overwriting 
+                  of data/applications  within the device.  DO NOT install 
+                  these versions or installed to your device - the problem
+                  occured with  specific gameboy rom  images that were not
+                  tested (there are over 1000 rom image) within the lab.
+
+  // Aaron Ardiri
+  // Michael Ethetton
+  - the Liberty development team           
+
+----------------------------------------------------------------------------

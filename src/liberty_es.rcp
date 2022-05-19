@@ -1,0 +1,870 @@
+/*
+ * @(#)liberty_en.rcp
+ *
+ * Copyright 2002-2002, Aaron Ardiri     (mailto:aaron@ardiri.com)
+ *                      Michael Ethetton (mailto:methetton@gambitstudios.com)
+ * All rights reserved.
+ * 
+ * This file was generated as part of the "liberty" program developed for 
+ * the Palm Computing Platform designed by Palm: http://www.palm.com/ 
+ *
+ * The contents of this file is confidential and proprietrary in nature 
+ * ("Confidential Information"). Redistribution or modification without 
+ * prior consent of the original author(s) is prohibited.
+ *
+ * NOTE:
+ * The following portions of code found within this source code file are
+ * owned exclusively by Michael Ethetton  and shall not be used in or
+ * sold to other projects (internal or external) without the written
+ * permission of Michael Ethetton.
+ *
+ * - z-80 CPU Emulation
+ * - Nintendo Gameboy Emulation System
+ *
+ * The following portions of code found within this source code file are
+ * owned exclusively by Aaron Ardiri  and shall not be used in or 
+ * sold to other projects (internal or external) without the written 
+ * permission of Aaron Ardiri.
+ *
+ * - GNU prc-tools 2.0 application framework
+ * - Help System 
+ * - Device Configuration Module
+ * - Multiple Code Segments Solution
+ *
+ * It shall be noted that Aaron Ardiri has licensed the above source code
+ * and framework to Michael Ethetton for use only in the "liberty" project.
+ *
+ * ------------------------------------------------------------------------
+ *                THIS FILE CONTAINS THE SPANISH LANGUAGE TEXT
+ * ------------------------------------------------------------------------
+ */
+
+#include "resource.h"
+
+ALERT ID removeROMAlert DEFAULTBUTTON 1 WARNING
+BEGIN
+  TITLE "Borrar el juego instalado"
+  MESSAGE "¿Estás seguro que quieres borrar el juego '^1'?"
+  BUTTONS "Si" "No"
+END
+
+ALERT ID removeSAVEDAlert DEFAULTBUTTON 1 WARNING
+BEGIN
+  TITLE "Borrar la partida salvada"
+  MESSAGE "¿Estás seguro de querer borrar la partida '^1'?"
+  BUTTONS "Si" "No"
+END
+
+ALERT ID deleteErrorAlert ERROR
+BEGIN
+  TITLE "Error al borrar"
+  MESSAGE "Liberty no lo ha podido borrar."
+  BUTTONS "Ok"
+END
+
+ALERT ID saveErrorAlert ERROR
+BEGIN
+  TITLE "Error en la partida salvada"
+  MESSAGE "Liberty no podia guardar la partida actual.\n\nPor favor, prueba de nuevo y consulta el FAQ.txt."
+  BUTTONS "Ok"
+END
+
+ALERT ID loadErrorAlert ERROR
+BEGIN
+  TITLE "Error al restablecer la partida"
+  MESSAGE "Liberty no puede cargar la partida guardada.\n\nPor favor, prueba de nuevo y consulta el FAQ.txt.\n\nSe ha borrado la partida guardada."
+  BUTTONS "Ok"
+END
+
+FORM ID infoForm AT (2 2 156 156) MODAL
+BEGIN
+  TITLE "Acerca de Liberty"
+
+  FORMBITMAP AT (6 16) BITMAP bitmapIcon
+  LABEL "http://gambitstudios.com/" AUTOID AT (40 PrevTop)
+  LABEL "GameBoy\231 Emulator!" AUTOID AT (40 PrevBottom) FONT 1
+
+  FORMBITMAP AT (88 PrevBottom+8) BITMAP bitmapPalm
+  LABEL "Copyright 2002" AUTOID AT (8 PrevTop-2)
+  LABEL "Gambit Studios" AUTOID AT (8 PrevBottom)
+  LABEL "All rights reserved" AUTOID AT (8 PrevBottom)
+
+  LABEL "Liberty" AUTOID AT (8 PrevBottom+3) FONT 1
+  LABEL "version 1.3.1"  AUTOID AT (8 PrevBottom-1) FONT 1
+
+  LABEL "GameBoy\231 is a reg. trademark" AUTOID AT (8 PrevBottom+3)
+  LABEL "of Nintendo of America Inc." AUTOID AT (8 PrevBottom)
+
+  BUTTON "Ok" ID infoFormOkButton AT (CENTER 138 40 AUTO)
+END
+
+FORM ID deviForm AT (2 2 156 156) MODAL
+BEGIN
+  TITLE "Incompatabilidad"
+
+  LABEL "este PDA es incompatible" AUTOID AT (CENTER 20)
+  LABEL "lea README.TXT." AUTOID AT (CENTER PrevTop+11)
+
+  LABEL "http://gambitstudios.com/" AUTOID AT (CENTER PrevTop+15)
+
+  LABEL "Copyright 2002" AUTOID AT (8 PrevTop+20)
+  FORMBITMAP AT (88 PrevTop-4) BITMAP bitmapPalm
+  LABEL "Gambit Studios" AUTOID AT (8 PrevTop+16)
+  LABEL "All rights reserved" AUTOID AT (8 PrevTop+12)
+
+  LABEL "Liberty" AUTOID AT (8 PrevTop+16) FONT 1
+  LABEL "version 1.3.1" AUTOID AT (8 PrevTop+12) FONT 1
+
+  BUTTON "Ok" AUTOID AT (CENTER 138 40 AUTO)
+END
+
+FORM ID dvlpForm AT (2 2 156 156) MODAL
+BEGIN
+  TITLE "Acerca de los desarrolladores"
+
+  FORMBITMAP AT (6 16) BITMAP bitmapGambit
+  LABEL "Michael Ethetton" AUTOID AT (52 PrevTop-2) FONT 1
+  LABEL "http://gambitstudios.com/" AUTOID AT (40 PrevBottom-1)
+  LABEL "sales@gambitstudios.com" AUTOID AT (43 PrevBottom-1)
+
+  LABEL "- z80 CPU Emulation" AUTOID AT (8 PrevTop+14) 
+  LABEL "- GameBoy\231 Emulation" AUTOID AT (8 PrevBottom-1) 
+
+  FORMBITMAP AT (116 PrevTop+14) BITMAP bitmapPaw
+  LABEL "Aaron Ardiri" AUTOID AT (27 PrevTop) FONT 1
+  LABEL "http://www.ardiri.com/" AUTOID AT (10 PrevBottom-1)
+  LABEL "aaron@ardiri.com" AUTOID AT (20 PrevBottom-1)
+
+  LABEL "- User Interface" AUTOID AT (8 PrevTop+14) 
+  LABEL "- Application Framework" AUTOID AT (8 PrevBottom-1) 
+
+  BUTTON "Ok" ID dvlpFormOkButton AT (CENTER 138 40 AUTO)
+END
+
+FORM ID cfigForm AT (2 2 156 156) MODAL
+BEGIN
+  TITLE "Configuración"
+
+  FORMBITMAP AT (0 PrevTop+32) BITMAP bitmapKeyConfig
+
+  POPUPTRIGGER "" ID cfigFormHardKey1Trigger AT (4 PrevTop-12 44 AUTO) LEFTANCHOR
+  LIST "Izquierda" "Derecha" "Arriba" "Abajo" "-[A]-" "-[B]-" ID cfigFormHardKey1List AT (PrevLeft+16 PrevTop 40 16) VISIBLEITEMS 6 NONUSABLE
+  POPUPLIST ID cfigFormHardKey1Trigger cfigFormHardKey1List
+
+  POPUPTRIGGER "" ID cfigFormHardKey4Trigger AT (108 PrevTop 44 AUTO) LEFTANCHOR
+  LIST "Izquierda" "Derecha" "Arriba" "Abajo" "-[A]-" "-[B]-" ID cfigFormHardKey4List AT (PrevLeft+16 PrevTop 40 16) VISIBLEITEMS 6 NONUSABLE
+  POPUPLIST ID cfigFormHardKey4Trigger cfigFormHardKey4List
+
+  POPUPTRIGGER "" ID cfigFormPageUpTrigger AT (56 PrevTop+4 44 AUTO) LEFTANCHOR
+  LIST "Izquierda" "Derecha" "Arriba" "Abajo" "-[A]-" "-[B]-" ID cfigFormPageUpList AT (PrevLeft+16 PrevTop 40 16) VISIBLEITEMS 6 NONUSABLE
+  POPUPLIST ID cfigFormPageUpTrigger cfigFormPageUpList
+
+  POPUPTRIGGER "" ID cfigFormHardKey2Trigger AT (20 PrevTop+32 44 AUTO) LEFTANCHOR
+  LIST "Izquierda" "Derecha" "Arriba" "Abajo" "-[A]-" "-[B]-" ID cfigFormHardKey2List AT (PrevLeft+16 PrevTop 40 16) VISIBLEITEMS 6 NONUSABLE
+  POPUPLIST ID cfigFormHardKey2Trigger cfigFormHardKey2List
+
+  POPUPTRIGGER "" ID cfigFormHardKey3Trigger AT (98 PrevTop 44 AUTO) LEFTANCHOR
+  LIST "Izquierda" "Derecha" "Arriba" "Abajo" "-[A]-" "-[B]-" ID cfigFormHardKey3List AT (PrevLeft+16 PrevTop 40 16) VISIBLEITEMS 6 NONUSABLE
+  POPUPLIST ID cfigFormHardKey3Trigger cfigFormHardKey3List
+
+  POPUPTRIGGER "" ID cfigFormPageDownTrigger AT (56 PrevTop+10 44 AUTO) LEFTANCHOR
+  LIST "Izquierda" "Derecha" "Arriba" "Abajo" "-[A]-" "-[B]-" ID cfigFormPageDownList AT (PrevLeft+16 PrevTop 40 16) VISIBLEITEMS 6 NONUSABLE
+  POPUPLIST ID cfigFormPageDownTrigger cfigFormPageDownList
+
+  LABEL "Calc/Find:" AUTOID AT (4 PrevTop+11)
+  CHECKBOX "" ID cfigFormButtonCheckbox AT (60-3 PrevTop AUTO AUTO)
+  LABEL "Act as Start/Select" AUTOID AT (PrevRight PrevTop) 
+  
+  CHECKBOX "" ID cfigFormCPUCycleCheckbox AT (60-3 PrevBottom-1 AUTO AUTO)
+  LABEL "Emulación Radical" AUTOID AT (PrevRight PrevTop) 
+
+  LABEL "Ajuste de fotogramas:" AUTOID AT (4 PrevBottom-1)
+  POPUPTRIGGER "" ID cfigFormBlitTrigger AT (60-3 PrevTop 92 AUTO) LEFTANCHOR
+  LIST "Todos los Fotogramas" "Cada 2 Fotogramas" "Cada 3 Fotogramas" "Cada 4 Fotogramas" ID cfigFormBlitList AT (PrevLeft+16 PrevTop 76 16) VISIBLEITEMS 4 NONUSABLE
+  POPUPLIST ID cfigFormBlitTrigger cfigFormBlitList
+
+  LABEL "Sonido:" AUTOID AT (4 PrevTop+11)
+  PUSHBUTTON "" ID cfigFormSound0Button AT (60 PrevTop+2 9 8) GROUP 2
+  PUSHBUTTON "" ID cfigFormSound1Button AT (PrevLeft+10 PrevTop 9 8) GROUP 2
+  PUSHBUTTON "" ID cfigFormSound2Button AT (PrevLeft+10 PrevTop 9 8) GROUP 2
+  PUSHBUTTON "" ID cfigFormSound3Button AT (PrevLeft+10 PrevTop 9 8) GROUP 2
+  CHECKBOX "Silencio" ID cfigFormMuteCheckbox AT (PrevLeft+18 PrevTop-2 AUTO AUTO)
+
+  LABEL "Canales Activos:" AUTOID AT (16 PrevBottom-1)
+  CHECKBOX "#1" ID cfigFormChannel1Checkbox AT (90 PrevTop AUTO AUTO)
+  CHECKBOX "#2" ID cfigFormChannel2Checkbox AT (PrevLeft+34 PrevTop AUTO AUTO)
+
+  BUTTON "Ok" ID cfigFormOkButton AT (30 138 40 AUTO)
+  BUTTON "Cancelar" ID cfigFormCancelButton AT (90 PrevTop 40 AUTO)
+END
+
+FORM ID grayForm AT (2 2 156 156) MODAL
+BEGIN
+  TITLE "Conffiguración escala de grises"
+
+  LABEL "Con la retroiluminación activa" AUTOID AT (CENTER 26)
+  LABEL "los ajustes pueden no ser de" AUTOID AT (CENTER PrevTop+11)
+  LABEL "facil lectura en PDA monocromos" AUTOID AT (CENTER PrevTop+11)
+
+  LABEL "Tu puedes ajustar el brillo" AUTOID AT (CENTER PrevTop+14)
+  LABEL "de los tonos abajo." AUTOID AT (CENTER PrevTop+11)
+
+  FORMBITMAP AT (4 PrevTop+14) BITMAP bitmapGrayscaleTest1
+
+  PUSHBUTTON "" ID grayWhite1Button AT (68 PrevTop+1 11 8) DISABLED GROUP 1
+  PUSHBUTTON "" ID grayWhite2Button AT (PrevLeft+12 PrevTop 11 8) DISABLED GROUP 1
+  PUSHBUTTON "" ID grayWhite3Button AT (PrevLeft+12 PrevTop 11 8) DISABLED GROUP 1
+  PUSHBUTTON "" ID grayWhite4Button AT (PrevLeft+12 PrevTop 11 8) DISABLED GROUP 1
+  PUSHBUTTON "" ID grayWhite5Button AT (PrevLeft+12 PrevTop 11 8) DISABLED GROUP 1
+  PUSHBUTTON "" ID grayWhite6Button AT (PrevLeft+12 PrevTop 11 8) DISABLED GROUP 1
+  PUSHBUTTON "" ID grayWhite7Button AT (PrevLeft+12 PrevTop 11 8) DISABLED GROUP 1
+
+  PUSHBUTTON "" ID grayLightGray1Button AT (68 PrevTop+12 11 8) GROUP 2
+  PUSHBUTTON "" ID grayLightGray2Button AT (PrevLeft+12 PrevTop 11 8) GROUP 2
+  PUSHBUTTON "" ID grayLightGray3Button AT (PrevLeft+12 PrevTop 11 8) GROUP 2
+  PUSHBUTTON "" ID grayLightGray4Button AT (PrevLeft+12 PrevTop 11 8) GROUP 2
+  PUSHBUTTON "" ID grayLightGray5Button AT (PrevLeft+12 PrevTop 11 8) GROUP 2
+  PUSHBUTTON "" ID grayLightGray6Button AT (PrevLeft+12 PrevTop 11 8) GROUP 2
+  PUSHBUTTON "" ID grayLightGray7Button AT (PrevLeft+12 PrevTop 11 8) GROUP 2
+  
+  PUSHBUTTON "" ID grayDarkGray1Button AT (68 PrevTop+12 11 8) GROUP 3
+  PUSHBUTTON "" ID grayDarkGray2Button AT (PrevLeft+12 PrevTop 11 8) GROUP 3
+  PUSHBUTTON "" ID grayDarkGray3Button AT (PrevLeft+12 PrevTop 11 8) GROUP 3
+  PUSHBUTTON "" ID grayDarkGray4Button AT (PrevLeft+12 PrevTop 11 8) GROUP 3
+  PUSHBUTTON "" ID grayDarkGray5Button AT (PrevLeft+12 PrevTop 11 8) GROUP 3
+  PUSHBUTTON "" ID grayDarkGray6Button AT (PrevLeft+12 PrevTop 11 8) GROUP 3
+  PUSHBUTTON "" ID grayDarkGray7Button AT (PrevLeft+12 PrevTop 11 8) GROUP 3
+
+  PUSHBUTTON "" ID grayBlack1Button AT (68 PrevTop+12 11 8) DISABLED GROUP 4
+  PUSHBUTTON "" ID grayBlack2Button AT (PrevLeft+12 PrevTop 11 8) DISABLED GROUP 4
+  PUSHBUTTON "" ID grayBlack3Button AT (PrevLeft+12 PrevTop 11 8) DISABLED GROUP 4
+  PUSHBUTTON "" ID grayBlack4Button AT (PrevLeft+12 PrevTop 11 8) DISABLED GROUP 4
+  PUSHBUTTON "" ID grayBlack5Button AT (PrevLeft+12 PrevTop 11 8) DISABLED GROUP 4
+  PUSHBUTTON "" ID grayBlack6Button AT (PrevLeft+12 PrevTop 11 8) DISABLED GROUP 4
+  PUSHBUTTON "" ID grayBlack7Button AT (PrevLeft+12 PrevTop 11 8) DISABLED GROUP 4
+
+  BUTTON "Ok" ID grayFormOkButton AT (CENTER 138 40 AUTO)
+END
+
+FORM ID gcolForm AT (2 2 156 156) MODAL
+BEGIN
+  TITLE "Paleta de Color"
+
+  FORMBITMAP AT (16 24) BITMAP bitmapGrayscaleTest2
+
+  LABEL "Rojo:" AUTOID AT (4 60)
+  PUSHBUTTON "" id gcolFormLRButton0 at (PrevLeft+40 PrevTop 11 8) GROUP 1
+  PUSHBUTTON "" id gcolFormLRButton1 at (PrevRight+1 PrevTop 11 8) GROUP 1
+  PUSHBUTTON "" id gcolFormLRButton2 at (PrevRight+1 PrevTop 11 8) GROUP 1
+  PUSHBUTTON "" id gcolFormLRButton3 at (PrevRight+1 PrevTop 11 8) GROUP 1
+  PUSHBUTTON "" id gcolFormLRButton4 at (PrevRight+1 PrevTop 11 8) GROUP 1
+  PUSHBUTTON "" id gcolFormLRButton5 at (PrevRight+1 PrevTop 11 8) GROUP 1
+  PUSHBUTTON "" id gcolFormLRButton6 at (PrevRight+1 PrevTop 11 8) GROUP 1
+  PUSHBUTTON "" id gcolFormLRButton7 at (PrevRight+1 PrevTop 11 8) GROUP 1
+  PUSHBUTTON "" id gcolFormLRButton8 at (PrevRight+1 PrevTop 11 8) GROUP 1
+
+  LABEL "Verde:" AUTOID AT (4 PrevTop+12)
+  PUSHBUTTON "" id gcolFormLGButton0 at (PrevLeft+40 PrevTop 11 8) GROUP 2
+  PUSHBUTTON "" id gcolFormLGButton1 at (PrevRight+1 PrevTop 11 8) GROUP 2
+  PUSHBUTTON "" id gcolFormLGButton2 at (PrevRight+1 PrevTop 11 8) GROUP 2
+  PUSHBUTTON "" id gcolFormLGButton3 at (PrevRight+1 PrevTop 11 8) GROUP 2
+  PUSHBUTTON "" id gcolFormLGButton4 at (PrevRight+1 PrevTop 11 8) GROUP 2
+  PUSHBUTTON "" id gcolFormLGButton5 at (PrevRight+1 PrevTop 11 8) GROUP 2
+  PUSHBUTTON "" id gcolFormLGButton6 at (PrevRight+1 PrevTop 11 8) GROUP 2
+  PUSHBUTTON "" id gcolFormLGButton7 at (PrevRight+1 PrevTop 11 8) GROUP 2
+  PUSHBUTTON "" id gcolFormLGButton8 at (PrevRight+1 PrevTop 11 8) GROUP 2
+
+  LABEL "Azul:" AUTOID AT (4 PrevTop+12)
+  PUSHBUTTON "" id gcolFormLBButton0 at (PrevLeft+40 PrevTop 11 8) GROUP 3
+  PUSHBUTTON "" id gcolFormLBButton1 at (PrevRight+1 PrevTop 11 8) GROUP 3
+  PUSHBUTTON "" id gcolFormLBButton2 at (PrevRight+1 PrevTop 11 8) GROUP 3
+  PUSHBUTTON "" id gcolFormLBButton3 at (PrevRight+1 PrevTop 11 8) GROUP 3
+  PUSHBUTTON "" id gcolFormLBButton4 at (PrevRight+1 PrevTop 11 8) GROUP 3
+  PUSHBUTTON "" id gcolFormLBButton5 at (PrevRight+1 PrevTop 11 8) GROUP 3
+  PUSHBUTTON "" id gcolFormLBButton6 at (PrevRight+1 PrevTop 11 8) GROUP 3
+  PUSHBUTTON "" id gcolFormLBButton7 at (PrevRight+1 PrevTop 11 8) GROUP 3
+  PUSHBUTTON "" id gcolFormLBButton8 at (PrevRight+1 PrevTop 11 8) GROUP 3
+
+  LABEL "Rojo:" AUTOID AT (4 PrevTop+14)
+  PUSHBUTTON "" id gcolFormDRButton0 at (PrevLeft+40 PrevTop 11 8) GROUP 4
+  PUSHBUTTON "" id gcolFormDRButton1 at (PrevRight+1 PrevTop 11 8) GROUP 4
+  PUSHBUTTON "" id gcolFormDRButton2 at (PrevRight+1 PrevTop 11 8) GROUP 4
+  PUSHBUTTON "" id gcolFormDRButton3 at (PrevRight+1 PrevTop 11 8) GROUP 4
+  PUSHBUTTON "" id gcolFormDRButton4 at (PrevRight+1 PrevTop 11 8) GROUP 4
+  PUSHBUTTON "" id gcolFormDRButton5 at (PrevRight+1 PrevTop 11 8) GROUP 4
+  PUSHBUTTON "" id gcolFormDRButton6 at (PrevRight+1 PrevTop 11 8) GROUP 4
+  PUSHBUTTON "" id gcolFormDRButton7 at (PrevRight+1 PrevTop 11 8) GROUP 4
+  PUSHBUTTON "" id gcolFormDRButton8 at (PrevRight+1 PrevTop 11 8) GROUP 4
+
+  LABEL "Verde:" AUTOID AT (4 PrevTop+12)
+  PUSHBUTTON "" id gcolFormDGButton0 at (PrevLeft+40 PrevTop 11 8) GROUP 5
+  PUSHBUTTON "" id gcolFormDGButton1 at (PrevRight+1 PrevTop 11 8) GROUP 5
+  PUSHBUTTON "" id gcolFormDGButton2 at (PrevRight+1 PrevTop 11 8) GROUP 5
+  PUSHBUTTON "" id gcolFormDGButton3 at (PrevRight+1 PrevTop 11 8) GROUP 5
+  PUSHBUTTON "" id gcolFormDGButton4 at (PrevRight+1 PrevTop 11 8) GROUP 5
+  PUSHBUTTON "" id gcolFormDGButton5 at (PrevRight+1 PrevTop 11 8) GROUP 5
+  PUSHBUTTON "" id gcolFormDGButton6 at (PrevRight+1 PrevTop 11 8) GROUP 5
+  PUSHBUTTON "" id gcolFormDGButton7 at (PrevRight+1 PrevTop 11 8) GROUP 5
+  PUSHBUTTON "" id gcolFormDGButton8 at (PrevRight+1 PrevTop 11 8) GROUP 5
+
+  LABEL "Azul:" AUTOID AT (4 PrevTop+12)
+  PUSHBUTTON "" id gcolFormDBButton0 at (PrevLeft+40 PrevTop 11 8) GROUP 6
+  PUSHBUTTON "" id gcolFormDBButton1 at (PrevRight+1 PrevTop 11 8) GROUP 6
+  PUSHBUTTON "" id gcolFormDBButton2 at (PrevRight+1 PrevTop 11 8) GROUP 6
+  PUSHBUTTON "" id gcolFormDBButton3 at (PrevRight+1 PrevTop 11 8) GROUP 6
+  PUSHBUTTON "" id gcolFormDBButton4 at (PrevRight+1 PrevTop 11 8) GROUP 6
+  PUSHBUTTON "" id gcolFormDBButton5 at (PrevRight+1 PrevTop 11 8) GROUP 6
+  PUSHBUTTON "" id gcolFormDBButton6 at (PrevRight+1 PrevTop 11 8) GROUP 6
+  PUSHBUTTON "" id gcolFormDBButton7 at (PrevRight+1 PrevTop 11 8) GROUP 6
+  PUSHBUTTON "" id gcolFormDBButton8 at (PrevRight+1 PrevTop 11 8) GROUP 6
+
+  BUTTON "Ok" ID gcolFormOkButton AT (CENTER 138 40 AUTO)
+END
+
+#ifdef PROTECTION_ON
+FORM ID regiForm AT (2 2 156 156) MODAL
+BEGIN
+  TITLE "Registro"
+
+  FORMBITMAP AT (6 16) BITMAP bitmapGambit
+  LABEL "http://gambitstudios.com/" AUTOID AT (40 PrevTop+4)
+  LABEL "GameBoy\231 Emulator!" AUTOID AT (40 PrevBottom) FONT 1
+  LABEL "sales@gambitstudios.com" AUTOID AT (CENTER 48) FONT 1
+
+  LABEL "- copialo exactamete -" AUTOID AT (CENTER PrevTop+30) FONT 1
+
+  LABEL "El registro ayuda a los" AUTOID AT (CENTER PrevTop+16)
+  LABEL "desarrolladores y hace que podamos" AUTOID AT (CENTER PrevTop+12)
+  LABEL "seguir desarrollando este programa." AUTOID AT (CENTER PrevTop+12)
+
+  BUTTON "Ok" ID regiFormOkButton AT (CENTER 138 40 AUTO)
+END
+
+FORM ID rbugForm AT (2 2 156 156) MODAL
+BEGIN
+  TITLE "Limitación de la Demo"
+
+  FORMBITMAP AT (6 16) BITMAP bitmapGambit
+  LABEL "http://gambitstudios.com/" AUTOID AT (40 PrevTop+4)
+  LABEL "GameBoy\231 Emulator!" AUTOID AT (40 PrevBottom) FONT 1
+  LABEL "sales@gambitstudios.com" AUTOID AT (CENTER 48) FONT 1
+
+  LABEL "Solo juegos de GameBoy\231 de 32K pueden ser" AUTOID AT (CENTER PrevTop+18)
+  LABEL "usados en al versión demostración." AUTOID AT (CENTER PrevTop+12)
+
+  LABEL "El registro ayuda a los" AUTOID AT (CENTER PrevTop+16)
+  LABEL "desarrolladores y hace que podamos" AUTOID AT (CENTER PrevTop+12)
+  LABEL "seguir desarrollando este programa." AUTOID AT (CENTER PrevTop+12)
+
+  BUTTON "Ok" ID rbugFormOkButton AT (CENTER 138 40 AUTO)
+END
+#endif
+
+FORM ID helpForm AT (2 2 156 156) MODAL
+BEGIN
+  TITLE "Instrucciones"
+
+  SCROLLBAR ID helpFormScrollBar AT (147 16 7 116) VALUE 0 MIN 0 MAX 0 PAGESIZE 100
+
+  BUTTON "Volver" ID helpFormOkButton AT (6 138 AUTO AUTO)
+  LABEL "\251 Gambit Studios" AUTOID AT (64 PrevTop+1) FONT 1
+END
+
+FORM ID xmemForm AT (2 2 156 156) MODAL
+BEGIN
+  TITLE "Memoria del Sistema"
+
+  FORMBITMAP AT (6 16) BITMAP bitmapGambit
+  LABEL "http://gambitstudios.com/" AUTOID AT (40 PrevTop+4)
+  LABEL "GameBoy\231 Emulator!" AUTOID AT (40 PrevBottom) FONT 1
+  LABEL "sales@gambitstudios.com" AUTOID AT (CENTER 48) FONT 1
+
+  LABEL "Insuficiente memoria libre" AUTOID AT (CENTER PrevTop+18)
+  LABEL "para lo que quiere hacer." AUTOID AT (CENTER PrevTop+12)
+
+  LABEL "Por favor, desactive cualquier" AUTOID AT (CENTER PrevTop+16)
+  LABEL "modificador y use el entorno por" AUTOID AT (CENTER PrevTop+12)
+  LABEL "defecto del PDA." AUTOID AT (CENTER PrevTop+12)
+
+  BUTTON "Ok" ID xmemFormOkButton AT (CENTER 138 40 AUTO)
+END
+
+FORM ID warnForm AT (2 2 156 156) MODAL
+BEGIN
+  TITLE "Aviso del emulador"
+
+  FORMBITMAP AT (6 16) BITMAP bitmapGambit
+  LABEL "http://gambitstudios.com/" AUTOID AT (40 PrevTop+4)
+  LABEL "GameBoy\231 Emulator!" AUTOID AT (40 PrevBottom) FONT 1
+  LABEL "support@gambitstudios.com" AUTOID AT (CENTER 48) FONT 1
+
+  LABEL "No todos los juegos de GameBoy han" AUTOID AT (CENTER PrevTop+18)
+  LABEL "sido testeados y puede que necesite" AUTOID AT (CENTER PrevTop+12)
+  LABEL "reiniciar su PDA en algunos casos." AUTOID AT (CENTER PrevTop+12)
+
+  LABEL "Gambit Studios le recomienda que los" AUTOID AT (CENTER PrevTop+16)
+  LABEL "pruebe en POSE antes de instalarlos." AUTOID AT (CENTER PrevTop+12)
+
+  CHECKBOX "mostar al arrancar" ID warnFormShowWarnCheckbox AT (8 138 AUTO AUTO)
+  BUTTON "Ok" ID warnFormOkButton AT (104 PrevTop 40 AUTO)
+END
+
+FORM ID saveForm AT (2 2 156 156) MODAL
+BEGIN
+  TITLE "Partidas salvadas"
+
+  LABEL "Liberty le da al usuario la opción" AUTOID AT (CENTER 16)
+  LABEL "de guardar una partida del" AUTOID AT (CENTER PrevTop+11)
+  LABEL "juego de GameBoy\231 instalado." AUTOID AT (CENTER PrevTop+11)
+
+  LABEL "Partidas guardadas de GameBoy\231:" AUTOID AT (CENTER PrevTop+14) FONT 1
+  LIST "" ID saveFormSavedList 
+    AT (8 PrevTop+13 140 AUTO) VISIBLEITEMS 4 USABLE
+
+  LABEL "Seleccione una y seleccione" AUTOID AT (CENTER PrevBottom+3)
+  LABEL "la operación que desea realizar." AUTOID AT (CENTER PrevTop+11)
+
+  BUTTON "Reanudar" ID saveFormRestoreButton AT (10 138 40 AUTO)
+  BUTTON "Borrar" ID saveFormDeleteButton AT (PrevRight+10 PrevTop 40 AUTO)
+  BUTTON "Volver" ID saveFormDoneButton AT (PrevRight+10 PrevTop 40 AUTO)
+END
+
+FORM ID xromForm AT (2 2 156 156) MODAL
+BEGIN
+  TITLE "Juego no valido"
+
+  FORMBITMAP AT (6 16) BITMAP bitmapGambit
+  LABEL "http://gambitstudios.com/" AUTOID AT (40 PrevTop+4)
+  LABEL "GameBoy\231 Emulator!" AUTOID AT (40 PrevBottom) FONT 1
+  LABEL "sales@gambitstudios.com" AUTOID AT (CENTER 48) FONT 1
+
+  LABEL "El juego de GameBoy\231 que" AUTOID AT (CENTER PrevTop+18)
+  LABEL "tienes no funciona con este emulador."  AUTOID AT (CENTER PrevTop+12)
+
+  LABEL "Por favor vuelve a crear la imagen" AUTOID AT (CENTER PrevTop+16)
+  LABEL "usando la ultima rom2pdb" AUTOID AT (CENTER PrevTop+12)
+  LABEL "que ofrece Liberty." AUTOID AT (CENTER PrevTop+12)
+
+  BUTTON "Ok" ID xromFormOkButton AT (CENTER 138 40 AUTO)
+END
+
+FORM ID mainForm AT (0 0 160 160) NOSAVEBEHIND
+BEGIN
+  TITLE "Liberty"
+
+  BUTTON "" ID mainFormHelpButton AT (133 1 12 12) NOFRAME
+  FORMBITMAP AT (PrevLeft PrevTop) BITMAP bitmapHelp
+  BUTTON "" ID mainFormAboutButton AT (PrevLeft+14 PrevTop 12 12) NOFRAME
+  FORMBITMAP AT (PrevLeft PrevTop) BITMAP bitmapAbout
+
+  FORMBITMAP AT (8 18) BITMAP bitmapIcon
+  LABEL "GameBoy\231 Emulator!" AUTOID AT (PrevLeft+32 PrevTop+4) FONT 7
+
+  LABEL "Juegos Instalados:" AUTOID AT (8 PrevTop+26) FONT 1 
+  LABEL "Tamaño:" AUTOID AT (PrevLeft+110 PrevTop) FONT 1 
+
+  GADGET ID mainFormGameGadget AT (4 PrevTop+12 146 55)
+  SCROLLBAR ID mainFormScrollBar AT (151 PrevTop 7 PrevHeight) VALUE 0 MIN 0 MAX 0 PAGESIZE 5
+
+  PUSHBUTTON "JUGAR" ID mainFormPlayButton AT (CENTER PrevBottom+4 40 AUTO) 
+
+  LABEL "\251 2002 Gambit Studios LLC" AUTOID AT (CENTER PrevTop+14) FONT 1
+END
+
+#ifdef PROTECTION_ON
+MENU ID mainMenu_nogray
+BEGIN
+  PULLDOWN "Juego"
+  BEGIN
+    MENUITEM "Jugar"           mainMenuItemPlay       "P"
+    MENUITEM "Enviar"           mainMenuItemBeam       "B"
+    MENUITEM "Borrar"         mainMenuItemDelete     "D"
+    MENUITEM SEPARATOR
+    MENUITEM "Partidas Guardadas"    mainMenuItemSavedGames "S"
+    MENUITEM SEPARATOR
+    MENUITEM "Configuración"  menuItemConfig         "C"
+    MENUITEM SEPARATOR
+    MENUITEM "Registrar"       menuItemRegister       "R"
+  END
+  PULLDOWN "Ayuda"
+  BEGIN
+      MENUITEM "Instrucciones"   menuItemHelp           "I"
+    MENUITEM "Avisos"        menuItemWarning        "W"
+    MENUITEM SEPARATOR
+    MENUITEM "Desarrolladores"     menuItemDeveloper      "A"
+    MENUITEM SEPARATOR
+    MENUITEM "Acerca de..."          menuItemAbout
+  END
+END
+
+MENU ID mainMenu_gray
+BEGIN
+  PULLDOWN "Juego"
+  BEGIN
+    MENUITEM "Jugar"           mainMenuItemPlay       "P"
+    MENUITEM "Enviar"           mainMenuItemBeam       "B"
+    MENUITEM "Borrar"         mainMenuItemDelete     "D"
+    MENUITEM SEPARATOR
+    MENUITEM "Partidas Guardadas"    mainMenuItemSavedGames "S"
+    MENUITEM SEPARATOR
+    MENUITEM "Escala de Grises"      menuItemGrayscale      "G"
+    MENUITEM "Configuración"  menuItemConfig         "C"
+    MENUITEM SEPARATOR
+    MENUITEM "Registrar"       menuItemRegister       "R"
+  END
+  PULLDOWN "Ayuda"
+  BEGIN
+      MENUITEM "Instrucciones"   menuItemHelp           "I"
+    MENUITEM "Avisos"        menuItemWarning        "W"
+    MENUITEM SEPARATOR
+    MENUITEM "Desarrolladores"     menuItemDeveloper      "A"
+    MENUITEM SEPARATOR
+    MENUITEM "Acerca de..."          menuItemAbout
+  END
+END
+
+MENU ID mainMenu_graycolor
+BEGIN
+  PULLDOWN "Juego"
+  BEGIN
+    MENUITEM "Jugar"           mainMenuItemPlay       "P"
+    MENUITEM "Enviar"           mainMenuItemBeam       "B"
+    MENUITEM "Borrar"         mainMenuItemDelete     "D"
+    MENUITEM SEPARATOR
+    MENUITEM "Partidas Guardadas"    mainMenuItemSavedGames "S"
+    MENUITEM SEPARATOR
+    MENUITEM "Paleta de Grises"   menuItemGrayPalette    "G"
+    MENUITEM "Configuración"  menuItemConfig         "C"
+    MENUITEM SEPARATOR
+    MENUITEM "Registrar"       menuItemRegister       "R"
+  END
+  PULLDOWN "Ayuda"
+  BEGIN
+      MENUITEM "Instrucciones"   menuItemHelp           "I"
+    MENUITEM "Avisos"        menuItemWarning        "W"
+    MENUITEM SEPARATOR
+    MENUITEM "Desarrolladores"     menuItemDeveloper      "A"
+    MENUITEM SEPARATOR
+    MENUITEM "Acerca de..."          menuItemAbout
+  END
+END
+
+#else
+MENU ID mainMenu_nogray
+BEGIN
+  PULLDOWN "Juego"
+  BEGIN
+    MENUITEM "Jugar"           mainMenuItemPlay       "P"
+    MENUITEM "Enviar"           mainMenuItemBeam       "B"
+    MENUITEM "Borrar"         mainMenuItemDelete     "D"
+    MENUITEM SEPARATOR
+    MENUITEM "Partidas Guardadas"    mainMenuItemSavedGames "S"
+    MENUITEM SEPARATOR
+    MENUITEM "Configuración"  menuItemConfig         "C"
+  END
+  PULLDOWN "Ayuda"
+  BEGIN
+      MENUITEM "Instrucciones"   menuItemHelp           "I"
+    MENUITEM "Avisos"        menuItemWarning        "W"
+    MENUITEM SEPARATOR
+    MENUITEM "Desarrolladores"     menuItemDeveloper      "A"
+    MENUITEM SEPARATOR
+    MENUITEM "Acerca de..."          menuItemAbout
+  END
+END
+
+MENU ID mainMenu_gray
+BEGIN
+  PULLDOWN "Juego"
+  BEGIN
+    MENUITEM "Jugar"           mainMenuItemPlay       "P"
+    MENUITEM "Enviar"           mainMenuItemBeam       "B"
+    MENUITEM "Borrar"         mainMenuItemDelete     "D"
+    MENUITEM SEPARATOR
+    MENUITEM "Partidas Guardadas"    mainMenuItemSavedGames "S"
+    MENUITEM SEPARATOR
+    MENUITEM "Escala de Grises"      menuItemGrayscale      "G"
+    MENUITEM "Configuración"  menuItemConfig         "C"
+  END
+  PULLDOWN "Ayuda"
+  BEGIN
+      MENUITEM "Instrucciones"   menuItemHelp           "I"
+    MENUITEM "Avisos"        menuItemWarning        "W"
+    MENUITEM SEPARATOR
+    MENUITEM "Desarrolladores"     menuItemDeveloper      "A"
+    MENUITEM SEPARATOR
+    MENUITEM "Acerca de..."          menuItemAbout
+  END
+END
+
+MENU ID mainMenu_graycolor
+BEGIN
+  PULLDOWN "Juego"
+  BEGIN
+    MENUITEM "Jugar"           mainMenuItemPlay       "P"
+    MENUITEM "Enviar"           mainMenuItemBeam       "B"
+    MENUITEM "Borrar"         mainMenuItemDelete     "D"
+    MENUITEM SEPARATOR
+    MENUITEM "Partidas Guardadas"    mainMenuItemSavedGames "S"
+    MENUITEM SEPARATOR
+    MENUITEM "Paleta de Grises"   menuItemGrayPalette    "G"
+    MENUITEM "Configuración"  menuItemConfig         "C"
+  END
+  PULLDOWN "Ayuda"
+  BEGIN
+      MENUITEM "Instrucciones"   menuItemHelp           "I"
+    MENUITEM "Avisos"        menuItemWarning        "W"
+    MENUITEM SEPARATOR
+    MENUITEM "Desarrolladores"     menuItemDeveloper      "A"
+    MENUITEM SEPARATOR
+    MENUITEM "Acerca de..."          menuItemAbout
+  END
+END
+#endif
+
+FORM ID gameForm AT (0 0 160 160) NOSAVEBEHIND
+BEGIN
+  TITLE "Liberty"
+
+  FORMBITMAP AT (94 1) BITMAP bitmapSButtons
+  BUTTON "" ID gameFormSelectButton AT (PrevLeft PrevTop 31 10) NOFRAME
+  BUTTON "" ID gameFormStartButton AT (PrevRight+2 PrevTop 31 10) NOFRAME
+END
+
+#ifdef PROTECTION_ON
+MENU ID gameMenu_nogray
+BEGIN
+  PULLDOWN "Juego"
+  BEGIN
+    MENUITEM "Pausa"          gameMenuItemPause      "P"
+    MENUITEM "Pulsar todas las teclas" gameMenuItemPressKeys  "K"
+    MENUITEM "Reiniciar"          gameMenuItemReset      "R"
+    MENUITEM SEPARATOR
+    MENUITEM "Guardar partida"      gameMenuItemSaveGame   "S"
+    MENUITEM SEPARATOR
+    MENUITEM "Configuración"  menuItemConfig         "C"
+    MENUITEM SEPARATOR
+    MENUITEM "Registrar"       menuItemRegister       "R"
+    MENUITEM SEPARATOR
+    MENUITEM "Salir"           gameMenuItemExit       "X"
+  END
+  PULLDOWN "Ayuda"
+  BEGIN
+    MENUITEM "Instrucciones"   menuItemHelp           "I"
+    MENUITEM "Avisos"        menuItemWarning        "W"
+    MENUITEM SEPARATOR
+    MENUITEM "Desarrolladores"     menuItemDeveloper      "A"
+    MENUITEM SEPARATOR
+    MENUITEM "Acerca de..."          menuItemAbout
+  END
+END
+
+MENU ID gameMenu_gray
+BEGIN
+  PULLDOWN "Juego"
+  BEGIN
+    MENUITEM "Pausa"          gameMenuItemPause      "P"
+    MENUITEM "Pulsar todas las teclas" gameMenuItemPressKeys  "K"
+    MENUITEM "Reiniciar"          gameMenuItemReset      "R"
+    MENUITEM SEPARATOR
+    MENUITEM "Guardar partida"      gameMenuItemSaveGame   "S"
+    MENUITEM SEPARATOR
+    MENUITEM "Partidas Guardadas"    mainMenuItemSavedGames "S"
+    MENUITEM "Configuración"  menuItemConfig         "C"
+    MENUITEM SEPARATOR
+    MENUITEM "Registrar"       menuItemRegister       "R"
+    MENUITEM SEPARATOR
+    MENUITEM "Salir"           gameMenuItemExit       "X"
+  END
+  PULLDOWN "Ayuda"
+  BEGIN
+    MENUITEM "Instrucciones"   menuItemHelp           "I"
+    MENUITEM "Avisos"        menuItemWarning        "W"
+    MENUITEM SEPARATOR
+    MENUITEM "Desarrolladores"     menuItemDeveloper      "A"
+    MENUITEM SEPARATOR
+    MENUITEM "Acerca de..."          menuItemAbout
+  END
+END
+
+MENU ID gameMenu_graycolor
+BEGIN
+  PULLDOWN "Juego"
+  BEGIN
+    MENUITEM "Pausa"          gameMenuItemPause      "P"
+    MENUITEM "Pulsar todas las teclas" gameMenuItemPressKeys  "K"
+    MENUITEM "Reiniciar"          gameMenuItemReset      "R"
+    MENUITEM SEPARATOR
+    MENUITEM "Guardar partida"      gameMenuItemSaveGame   "S"
+    MENUITEM SEPARATOR
+    MENUITEM "Paleta de Grises"   menuItemGrayPalette    "G"
+    MENUITEM "Configuración"  menuItemConfig         "C"
+    MENUITEM SEPARATOR
+    MENUITEM "Registrar"       menuItemRegister       "R"
+    MENUITEM SEPARATOR
+    MENUITEM "Salir"           gameMenuItemExit       "X"
+  END
+  PULLDOWN "Ayuda"
+  BEGIN
+    MENUITEM "Instrucciones"   menuItemHelp           "I"
+    MENUITEM "Avisos"        menuItemWarning        "W"
+    MENUITEM SEPARATOR
+    MENUITEM "Desarrolladores"     menuItemDeveloper      "A"
+    MENUITEM SEPARATOR
+    MENUITEM "Acerca de..."          menuItemAbout
+  END
+END
+#else
+MENU ID gameMenu_nogray
+BEGIN
+  PULLDOWN "Juego"
+  BEGIN
+    MENUITEM "Pausa"          gameMenuItemPause      "P"
+    MENUITEM "Pulsar todas las teclas" gameMenuItemPressKeys  "K"
+    MENUITEM "Reiniciar"          gameMenuItemReset      "R"
+    MENUITEM SEPARATOR
+    MENUITEM "Guardar partida"      gameMenuItemSaveGame   "S"
+    MENUITEM SEPARATOR
+    MENUITEM "Configuración"  menuItemConfig         "C"
+    MENUITEM SEPARATOR
+    MENUITEM "Salir"           gameMenuItemExit       "X"
+  END
+  PULLDOWN "Ayuda"
+  BEGIN
+    MENUITEM "Instrucciones"   menuItemHelp           "I"
+    MENUITEM "Avisos"        menuItemWarning        "W"
+    MENUITEM SEPARATOR
+    MENUITEM "Desarrolladores"     menuItemDeveloper      "A"
+    MENUITEM SEPARATOR
+    MENUITEM "Acerca de..."          menuItemAbout
+  END
+END
+
+MENU ID gameMenu_gray
+BEGIN
+  PULLDOWN "Juego"
+  BEGIN
+    MENUITEM "Pausa"          gameMenuItemPause      "P"
+    MENUITEM "Pulsar todas las teclas" gameMenuItemPressKeys  "K"
+    MENUITEM "Reiniciar"          gameMenuItemReset      "R"
+    MENUITEM SEPARATOR
+    MENUITEM "Guardar partida"      gameMenuItemSaveGame   "S"
+    MENUITEM SEPARATOR
+    MENUITEM "Partidas Guardadas"    mainMenuItemSavedGames "S"
+    MENUITEM "Configuración"  menuItemConfig         "C"
+    MENUITEM SEPARATOR
+    MENUITEM "Salir"           gameMenuItemExit       "X"
+  END
+  PULLDOWN "Ayuda"
+  BEGIN
+    MENUITEM "Instrucciones"   menuItemHelp           "I"
+    MENUITEM "Avisos"        menuItemWarning        "W"
+    MENUITEM SEPARATOR
+    MENUITEM "Desarrolladores"     menuItemDeveloper      "A"
+    MENUITEM SEPARATOR
+    MENUITEM "Acerca de..."          menuItemAbout
+  END
+END
+
+MENU ID gameMenu_graycolor
+BEGIN
+  PULLDOWN "Juego"
+  BEGIN
+    MENUITEM "Pausa"          gameMenuItemPause      "P"
+    MENUITEM "Pulsar todas las teclas" gameMenuItemPressKeys  "K"
+    MENUITEM "Reiniciar"          gameMenuItemReset      "R"
+    MENUITEM SEPARATOR
+    MENUITEM "Guardar partida"      gameMenuItemSaveGame   "S"
+    MENUITEM SEPARATOR
+    MENUITEM "Paleta de Grises"   menuItemGrayPalette    "G"
+    MENUITEM "Configuración"  menuItemConfig         "C"
+    MENUITEM SEPARATOR
+    MENUITEM "Salir"           gameMenuItemExit       "X"
+  END
+  PULLDOWN "Ayuda"
+  BEGIN
+    MENUITEM "Instrucciones"   menuItemHelp           "I"
+    MENUITEM "Avisos"        menuItemWarning        "W"
+    MENUITEM SEPARATOR
+    MENUITEM "Desarrolladores"     menuItemDeveloper      "A"
+    MENUITEM SEPARATOR
+    MENUITEM "Acerca de..."          menuItemAbout
+  END
+END
+#endif
+
+VERSION "1.3.1"
+
+ICONFAMILY 
+  "images/icon1bpp.bmp" "images/icon2bpp.bmp" "" "images/icon8bpp.bmp" 
+TRANSPARENCY 255 0 0
+
+SMALLICONFAMILY 
+  "images/smic1bpp.bmp" "images/smic2bpp.bmp" "" "images/smic8bpp.bmp"
+TRANSPARENCY 255 0 0
+
+BITMAPFAMILY bitmapIcon   
+  "images/icon1bpp.bmp" "images/icon2bpp.bmp" COMPRESS
+
+BITMAPFAMILY bitmapPaw
+  "images/_paw1bpp.bmp" "images/_paw2bpp.bmp" COMPRESS
+
+BITMAPFAMILY bitmapGambit
+  "images/gbit1bpp.bmp" "images/gbit2bpp.bmp" COMPRESS
+
+BITMAPFAMILY bitmapPalm
+  "images/palm1bpp.bmp" "images/palm2bpp.bmp" COMPRESS
+
+BITMAP bitmapAbout      "images/info1bpp.bmp" COMPRESS
+BITMAP bitmapHelp       "images/help1bpp.bmp" COMPRESS
+BITMAP bitmapSButtons   "images/sbut1bpp.bmp" COMPRESS
+
+BITMAPGREY bitmapGrayscaleTest1 "images/gray2bpp.bmp" COMPRESS
+BITMAPGREY bitmapGrayscaleTest2 "images/gcol2bpp.bmp" COMPRESS
+BITMAPGREY bitmapKeyConfig "images/keys2bpp.bmp" COMPRESS
+BITMAPGREY bitmapHelpSelectList "images/hlp12bpp_es.bmp" COMPRESS
+BITMAPGREY bitmapHelpStylusControl "images/hlp22bpp.bmp" COMPRESS
+
+// read-only / default binary chunks
+DATA "_bin" ID binaryHLConversion      "binary/hlconv.bin"
+DATA "_bin" ID binaryBackgroundPalette "binary/bgpal.bin"
+DATA "_bin" ID binarySpritePalette0    "binary/spr_pal0.bin"
+DATA "_bin" ID binarySpritePalette1    "binary/spr_pal1.bin"
+
+HEX "_bin" ID binaryXlat
+  0x00 0x00 0x00 0x05 0x00 0x0a 0x00 0x0f 0x00 0x50 0x00 0x55 0x00 0x5a 0x00 0x5f 
+  0x00 0xa0 0x00 0xa5 0x00 0xaa 0x00 0xaf 0x00 0xf0 0x00 0xf5 0x00 0xfa 0x00 0xff 
+  0x05 0x00 0x05 0x05 0x05 0x0a 0x05 0x0f 0x05 0x50 0x05 0x55 0x05 0x5a 0x05 0x5f 
+  0x05 0xa0 0x05 0xa5 0x05 0xaa 0x05 0xaf 0x05 0xf0 0x05 0xf5 0x05 0xfa 0x05 0xff 
+  0x0a 0x00 0x0a 0x05 0x0a 0x0a 0x0a 0x0f 0x0a 0x50 0x0a 0x55 0x0a 0x5a 0x0a 0x5f 
+  0x0a 0xa0 0x0a 0xa5 0x0a 0xaa 0x0a 0xaf 0x0a 0xf0 0x0a 0xf5 0x0a 0xfa 0x0a 0xff 
+  0x0f 0x00 0x0f 0x05 0x0f 0x0a 0x0f 0x0f 0x0f 0x50 0x0f 0x55 0x0f 0x5a 0x0f 0x5f 
+  0x0f 0xa0 0x0f 0xa5 0x0f 0xaa 0x0f 0xaf 0x0f 0xf0 0x0f 0xf5 0x0f 0xfa 0x0f 0xff 
+  0x50 0x00 0x50 0x05 0x50 0x0a 0x50 0x0f 0x50 0x50 0x50 0x55 0x50 0x5a 0x50 0x5f 
+  0x50 0xa0 0x50 0xa5 0x50 0xaa 0x50 0xaf 0x50 0xf0 0x50 0xf5 0x50 0xfa 0x50 0xff 
+  0x55 0x00 0x55 0x05 0x55 0x0a 0x55 0x0f 0x55 0x50 0x55 0x55 0x55 0x5a 0x55 0x5f 
+  0x55 0xa0 0x55 0xa5 0x55 0xaa 0x55 0xaf 0x55 0xf0 0x55 0xf5 0x55 0xfa 0x55 0xff 
+  0x5a 0x00 0x5a 0x05 0x5a 0x0a 0x5a 0x0f 0x5a 0x50 0x5a 0x55 0x5a 0x5a 0x5a 0x5f 
+  0x5a 0xa0 0x5a 0xa5 0x5a 0xaa 0x5a 0xaf 0x5a 0xf0 0x5a 0xf5 0x5a 0xfa 0x5a 0xff 
+  0x5f 0x00 0x5f 0x05 0x5f 0x0a 0x5f 0x0f 0x5f 0x50 0x5f 0x55 0x5f 0x5a 0x5f 0x5f 
+  0x5f 0xa0 0x5f 0xa5 0x5f 0xaa 0x5f 0xaf 0x5f 0xf0 0x5f 0xf5 0x5f 0xfa 0x5f 0xff 
+  0xa0 0x00 0xa0 0x05 0xa0 0x0a 0xa0 0x0f 0xa0 0x50 0xa0 0x55 0xa0 0x5a 0xa0 0x5f 
+  0xa0 0xa0 0xa0 0xa5 0xa0 0xaa 0xa0 0xaf 0xa0 0xf0 0xa0 0xf5 0xa0 0xfa 0xa0 0xff 
+  0xa5 0x00 0xa5 0x05 0xa5 0x0a 0xa5 0x0f 0xa5 0x50 0xa5 0x55 0xa5 0x5a 0xa5 0x5f 
+  0xa5 0xa0 0xa5 0xa5 0xa5 0xaa 0xa5 0xaf 0xa5 0xf0 0xa5 0xf5 0xa5 0xfa 0xa5 0xff 
+  0xaa 0x00 0xaa 0x05 0xaa 0x0a 0xaa 0x0f 0xaa 0x50 0xaa 0x55 0xaa 0x5a 0xaa 0x5f 
+  0xaa 0xa0 0xaa 0xa5 0xaa 0xaa 0xaa 0xaf 0xaa 0xf0 0xaa 0xf5 0xaa 0xfa 0xaa 0xff 
+  0xaf 0x00 0xaf 0x05 0xaf 0x0a 0xaf 0x0f 0xaf 0x50 0xaf 0x55 0xaf 0x5a 0xaf 0x5f 
+  0xaf 0xa0 0xaf 0xa5 0xaf 0xaa 0xaf 0xaf 0xaf 0xf0 0xaf 0xf5 0xaf 0xfa 0xaf 0xff 
+  0xf0 0x00 0xf0 0x05 0xf0 0x0a 0xf0 0x0f 0xf0 0x50 0xf0 0x55 0xf0 0x5a 0xf0 0x5f 
+  0xf0 0xa0 0xf0 0xa5 0xf0 0xaa 0xf0 0xaf 0xf0 0xf0 0xf0 0xf5 0xf0 0xfa 0xf0 0xff 
+  0xf5 0x00 0xf5 0x05 0xf5 0x0a 0xf5 0x0f 0xf5 0x50 0xf5 0x55 0xf5 0x5a 0xf5 0x5f 
+  0xf5 0xa0 0xf5 0xa5 0xf5 0xaa 0xf5 0xaf 0xf5 0xf0 0xf5 0xf5 0xf5 0xfa 0xf5 0xff 
+  0xfa 0x00 0xfa 0x05 0xfa 0x0a 0xfa 0x0f 0xfa 0x50 0xfa 0x55 0xfa 0x5a 0xfa 0x5f 
+  0xfa 0xa0 0xfa 0xa5 0xfa 0xaa 0xfa 0xaf 0xfa 0xf0 0xfa 0xf5 0xfa 0xfa 0xfa 0xff 
+  0xff 0x00 0xff 0x05 0xff 0x0a 0xff 0x0f 0xff 0x50 0xff 0x55 0xff 0x5a 0xff 0x5f 
+  0xff 0xa0 0xff 0xa5 0xff 0xaa 0xff 0xaf 0xff 0xf0 0xff 0xf5 0xff 0xfa 0xff 0xff
+
+#ifdef HANDERA
+HEX "sKst" ID 1000 0x00 0x00 0x00 0x00
+#endif

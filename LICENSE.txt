@@ -1,0 +1,49 @@
+----------------------------------------------------------------------------
+ Liberty version 1.3.1
+----------------------------------------------------------------------------
+
+  Gambit Studios
+  Electronic End User License Agreement
+  Liberty version 1.3.1
+
+  This  Gambit Studios ("GS")  End User  License Agreement accompanies the  
+  Liberty  product ("Software").  Read this  agreement very carefully.  If  
+  you do not wish to  accept this agreement,  you may  not  install or use 
+  this Software on  a device,  simulator or emulator of the Palm Computing 
+  Platform.
+
+  1. Use of Software
+  You may install the Software  on a device,  simulator or emulator of the
+  Palm Computing Platform and distribute unmodified copies of the Software
+  freely excluding the registration key in any form, modified or not. Each 
+  copy  that is  distributed   must  contain this  agreement and any other  
+  documentation pertaining to this Software. You may not offer versions of 
+  this Software for download or  other means of  distribution without  the  
+  prior consent  of GS.  You   may  not charge a fee for the  distribution 
+  of  this Software on  any media  with the  exception of the cost of  the 
+  media that it is supplied on or with.  In the case  where the medium  is 
+  physical,  on production,  a complimentary  copy of  the media  shall be 
+  supplied to GS free of charge. 
+
+  Gambit Studios may be contacted by email at:   support@gambitstudios.com
+
+  2. Copyright
+  The Software is owned by GS. Its structure, presentation and source code  
+  are  valuable trade  secrets of  GS.  This agreement  does not grant you 
+  intellectual property rights in the Software.
+
+  3. Restrictions
+  You agree not to modify, adapt, translate, reverse engineer,  decompile,
+  dissasemble or  otherwise attempt to discover the code and algorithms of 
+  the Software.
+
+  4. No Warranty
+  THE SOFTWARE IS DELIVERED AS IS AND GS MAKES NO WARRANTY AS  TO ITS  USE 
+  OR  PERFORMANCE.  GS  DOES NOT,  AND CANNOT WARRANT THE  PERFORMANCE  OR 
+  RESULTS YOU MAY OBTAIN BY  USING THE  SOFTWARE OR ITS DOCUMENTATION.  GS 
+  MAKES NO WARRANTIES, EXPRESS OR IMPLIED, AS TO NONINFRINGEMENT OF  THIRD 
+  PARTY RIGHTS, MERCHANTABILITY, OR FITNESS FOR ANY PARTICULAR PURPOSE. IN 
+  NO EVENT WILL GS BE LIABLE TO YOU FOR ANY  CONSEQUENTIAL,  INCIDENTAL OR  
+  SPECIAL DAMAGES, OR FOR ANY CLAIM BY ANY THIRD PARTY. 
+
+----------------------------------------------------------------------------
